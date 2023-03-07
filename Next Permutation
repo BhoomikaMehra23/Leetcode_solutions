@@ -1,0 +1,42 @@
+Next Permutation
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int p = -1;
+		int q = -1;
+		for (int i =nums.length - 2; i >= 0; i--) {
+			if (nums[i] <nums[i + 1]) {
+				p = i;
+				break;
+			}
+		}
+		if (p == -1) {
+			Reverse(nums, 0, nums.length - 1);
+			return;
+		}
+		for (int i = nums.length - 1; i > p; i--) {
+			if (nums[i] >nums[p]) {
+				q = i;
+				break;
+			}
+		}
+		int temp = nums[p];
+		nums[p] =nums[q];
+		nums[q] = temp;
+		Reverse(nums, p + 1, nums.length - 1);
+
+	}
+
+	public static void Reverse(int[] arr, int i, int j) {
+		// TODO Auto-generated method stub
+
+		while (i < j) {
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+			i++;
+			j--;
+		}
+
+	}
+        
+    }

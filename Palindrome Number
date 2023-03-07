@@ -1,0 +1,19 @@
+9. Palindrome Number
+class Solution {
+    public boolean isPalindrome(int x) {
+       int num=x;
+       int rev=0;
+       while(x>0){
+           int a=x%10; //remainder
+           rev=(rev*10)+a;
+           x=x/10;
+       }
+       if(num==rev){
+           return true;
+       }
+       else{
+           return false;
+       }
+        
+    }
+}

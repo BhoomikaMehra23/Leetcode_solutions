@@ -1,0 +1,24 @@
+Remove Duplicates from Sorted Array
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        //length of array nums
+        int n=nums.length;
+        //a counter variable to count the occurenece of digits
+       int count=0;
+       for(int i=0;i<n-1;i++){
+           //if the current element is not equal to the next element the increment the counter
+           if(nums[i]!=nums[i+1]){
+               nums[count++]=nums[i];
+
+           }
+       }
+       //store the element which is equal to the next element too beacuse it is not stored uniquely
+       nums[count++]=nums[n-1];
+       
+        return count;
+        
+
+        }
+    
+    //return nums,n;
+}

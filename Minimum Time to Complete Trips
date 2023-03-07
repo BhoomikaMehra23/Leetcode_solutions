@@ -1,0 +1,29 @@
+2187. Minimum Time to Complete Trips
+class Solution {
+    public long minimumTime(int[] time, int totalTrips) {
+         long low=0;
+       //  long min=time[0];
+        long  high=100000000000000L;
+         //long ans=high;
+        while(low<high){
+             long mid=(low+high)/2;
+             long count=0;//kitne number of trips laga skta hu vo store krenge is count se
+            for(int i:time){
+              // for(int i=1;i<time.length-2;i++){
+                count=count+(mid/i);
+            }
+            if(count<totalTrips)
+            {
+            //ans=Math.min(ans,mid);
+            low=mid+1;
+            }
+            else{
+                high=mid;
+            }
+
+        }
+        return low;
+
+        
+    }
+}

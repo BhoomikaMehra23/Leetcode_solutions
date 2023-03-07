@@ -1,0 +1,29 @@
+Letter Combinations of a Phone Number
+class Solution {
+   // static String[] key={"0","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz","+","0","#"};
+    static    String[] key = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+
+    public List<String> letterCombinations(String digits) {
+                List<String> list=new ArrayList<>();
+                if(digits.length()==0)
+                return list;
+
+                 return printkeypad(digits,"",list);
+               // return list;
+        }
+    public static List<String> printkeypad(String ques, String ans,List<String> list) {// 129
+		if (ques.length() == 0) {
+            list.add(ans);
+			//System.out.print(ans+" ");
+			return list;
+		}
+		char ch = ques.charAt(0);// '1'
+		String press = key[ch - '0'];// abc
+		for (int i = 0; i < press.length(); i++) {
+			printkeypad(ques.substring(1), ans + press.charAt(i),list);
+
+		}
+        return list;
+
+	}
+}

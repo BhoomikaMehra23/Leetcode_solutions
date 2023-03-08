@@ -1,0 +1,56 @@
+Koko Eating Bananas
+import java.util.*;
+import java.io.*;
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+
+       
+        int low=1;
+        int high=Integer.MIN_VALUE;
+
+      // int max=Integer . MIN_VALUE;
+        //here we use binary search on speed not on array 
+        //initially minimumspeed=0 and max speed isjis pile mai sbse jada bananas hnge
+        for(int i=0;i<piles.length;i++){
+            high=Math.max(high,piles[i]);   // this will give the pile having max value
+        }
+        // if(h==piles.length){
+        //     return max;
+        // }
+     //int[] piles1={3,6,7,11};
+       
+        
+         //minimum speed nikalre 
+         //int speed=Integer.MAX_VALUE;
+         while(low<high){
+             int speed1=low+(high-low)/2; // ham indices ke uper binary search nahi krre values  //ke uper krre haii toh OVERFLOW na ho isliye high-low
+             if(isPossible(piles,h,speed1)==true){
+                high=speed1;
+               // high=speed1-1;
+
+                 //high=speed1-1; //thodi aur choti speed check krayenge ki iss value par mil     //gaii but choti aur try krenge
+             }
+
+             else{
+                 low=speed1+1;
+             }
+
+            
+         }
+         return low;
+
+
+    }
+    public static boolean isPossible(int [] piles,int hours,int speed1){
+        
+
+        int time=0;
+        for(int i=0;i<piles.length;i++){
+            time+=(int)Math.ceil(piles[i]*1.0/speed1);
+        }
+        return time<=hours;
+
+             
+
+    }
+}

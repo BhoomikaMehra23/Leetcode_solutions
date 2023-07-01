@@ -1,0 +1,22 @@
+ Count Negative Numbers in a Sorted Matrix
+class Solution {
+    public int countNegatives(int[][] grid) {
+        int count=0;
+        for(int i=0;i<grid.length;i++){
+            int low=0;
+            int high=grid[i].length-1;
+            while(low<=high){
+                int mid=(low+high)/2;
+                if(grid[i][mid]<0){
+                    count=count+high-mid+1;
+                    high=mid-1;
+                }
+                else{
+                    low=mid+1;
+                }
+            }
+        }
+        return count;
+        
+    }
+}

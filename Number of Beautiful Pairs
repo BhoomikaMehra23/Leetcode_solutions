@@ -1,0 +1,36 @@
+Number of Beautiful Pairs
+class Solution {
+    public int countBeautifulPairs(int[] nums) {
+              int c=0;
+      System.out.println(gcd(firstDigit(nums[0]),lastDigit(nums[1])));
+      for(int i=0;i<nums.length;i++){
+          for(int j=i+1;j<nums.length;j++){
+              if(gcd(firstDigit(nums[i]),lastDigit(nums[j]))==1){
+                  c++;
+                }
+            }
+        }
+      return c;    
+    }
+    public static int firstDigit(int n)
+    {
+        while (n >= 10)
+            n /= 10;
+        return n;
+    }
+    public static int lastDigit(int n){
+        return(n%10);
+    }
+    public static int gcd(int a,int b){
+        int result = Math.min(a,b);
+        while (result > 0) 
+        {
+            if (a % result == 0 && b % result == 0) {
+                break;
+            }
+            result--;
+        }
+        return result;
+        
+    }
+}

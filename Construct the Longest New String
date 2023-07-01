@@ -1,0 +1,21 @@
+Construct the Longest New String
+class Solution {
+    public int longestString(int xx, int y, int z) 
+    {
+        int a=z*2;
+        if(xx>y)
+        
+        {
+            a=a+(2*y)+(y+1)*2;
+        }
+        else if  (y>xx)
+        
+        {
+            a=a+(2*xx)+(xx+1)*2;
+        }
+        else{
+            a=a+(4*xx);
+        }
+        return a;
+    }
+}

@@ -1,0 +1,23 @@
+class Solution {
+    public int differenceOfSums(int n, int m) {
+                                             
+        int aa=0;
+        int ra=0;
+        for(int i=1;i<=n;i++)
+        {
+            if(i%m!=0)
+            
+            {
+                aa=aa+i;
+            }
+        }
+        for(int i=1;i<=n;i++)
+        {
+            if(i%m==0){
+                ra=ra+i;
+            }
+        }
+        return aa-ra;
+        
+    }
+}

@@ -1,0 +1,30 @@
+class Solution {
+    public int integerBreak(int n) {
+        int [] arr=new int[n+1];
+        Arrays.fill(arr,-1);
+        return breakk(n,arr);
+
+
+        
+    }
+    public static int breakk(int n,int [] arr){
+        if(n<=3){
+            return n-1;
+        }
+        if(arr[n]!=-1){
+            return arr[n];
+        }
+        int max_product=0;
+        for(int i=1;i<=n-1;i++)
+        {
+            // int product=i * breakk(n-i,arr);
+            int product =i * Math.max(n-i,breakk(n-i,arr));
+            max_product=Math.max(max_product,product);
+
+
+        }
+        arr[n]=max_product;
+        return max_product;
+
+    }
+}

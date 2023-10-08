@@ -1,0 +1,20 @@
+class Solution {
+    public int minProcessingTime(List<Integer> processorTi, List<Integer> tasks) 
+    {
+         Collections.sort(processorTi);
+         Collections.sort(tasks);
+        int nuu=tasks.size()-1;
+        int a=0;
+        for(int i=0;i<processorTi.size();i++)
+        
+        {
+            int b=processorTi.get(i)+tasks.get(nuu);
+            a=Math.max(a,b);
+            nuu=nuu-4;
+        }
+        return a;
+   
+
+        
+    }
+}

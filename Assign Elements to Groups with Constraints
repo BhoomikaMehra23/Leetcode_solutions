@@ -1,0 +1,39 @@
+class Solution {
+    public int[] assignElements(int[] groups, int[] elements) {
+         int n = groups.length;
+        int m = elements.length;
+        int[] assigned = new int[n];
+        Map<Integer, Integer> elementMap = new HashMap<>();
+
+        for (int j = 0; j < m; j++) {
+
+     if (!elementMap.containsKey(elements[j])) {
+                elementMap.put(elements[j], j);
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            int groupSize = groups[i];
+            int minIndex = Integer.MAX_VALUE;
+
+            for (int d = 1; d <= Math.sqrt(groupSize); d++) {
+                if (groupSize % d == 0) {
+                    if (elementMap.containsKey(d)) {
+                        minIndex = Math.min(minIndex, elementMap.get(d));
+                    }
+                    if (d != groupSize / d && elementMap.containsKey(groupSize / d)) {
+                        minIndex = Math.min(minIndex, elementMap.get(groupSize / d));
+                    }
+                }
+            }
+
+            assigned[i] = (minIndex != Integer.MAX_VALUE) ? minIndex : -1;
+        }
+
+       
+        return assigned;
+
+        
+        }
+    
+}
